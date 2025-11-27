@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Home from "../pages/Home";
 import Favorites from "../pages/Favorites";
-import Category from "../pages/Category";
+import Books from "../pages/Books";
 import BookDetails from "../pages/BookDetails";
 
 const router = createBrowserRouter([
@@ -12,9 +12,9 @@ const router = createBrowserRouter([
     errorElement: <h1>an error occured</h1>,
     children: [
       { index: true, element: <Home /> },
-      { path: "category/:id", element: <Category /> },
-      { path: "favorites", element: <Favorites /> },
+      { path: "books", element: <Books /> },
       { path: "book/:id", element: <BookDetails /> },
+      { path: "favorites", element: <Favorites /> },
       { path: "*", element: <h1>404 not found</h1> },
     ],
   },
