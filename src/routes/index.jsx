@@ -7,7 +7,7 @@ import BookDetails from "../pages/BookDetails";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/gutendex2/",
     element: <App />,
     errorElement: <h1>an error occured</h1>,
     children: [
