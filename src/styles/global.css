@@ -41,6 +41,12 @@ body {
     justify-content: space-between;
     gap: 2rem;
 }
+.bookList{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 3rem;
+  margin: 3vw;
+}
 a {
   font-weight: 500;
   color: #646cff;
