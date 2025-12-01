@@ -2,13 +2,39 @@ import axios from "axios";
 
 const BASE_URL = "https://gutendex.com/books/";
 
-const fetchBooksByCategory = async (category, page = 1) => {
-  const res = await axios.get(`${BASE_URL}?topic=${encodeURIComponent(category)}&page=${page}`
-);
-if (!res.ok) {
-  throw new Error("failed to fetch books");
+const categoryMap = {
+  fiction: "Fiction",
+  mystery: "Mystery",
+  thriller: "Thriller",
+  romance: "Romance",
+  fantasy: "Fantasy",
+  morality: "Morality",
+  society: "Society",
+  power: "Power",
+  justice: "Justice",
+  adventure: "Adventure",
+  tragedy: "Tragedy",
+  war: "War",
+  philosophy: "Philosophy",
+};
+
+const fetchAllBooks = async (url = BASE_URL) => {
+  const res = await axios.get(url);
+  return res.data;
 }
-return res.json();
+
+const fetchBooksByCategory = async (category, pageUrl) => {
+if (!category) return null;
+const topic= categoryMap[category];
+const url = pageUrl || `${BASE_URL}?topic=${encodeURIComponent(topic)}`;
+const res = await axios.get(url);
+return res.data;
+}
+
+const searchBooks = async (query, pageUrl) => {
+  const url = pageUrl || `${BASE_URL}?search=${encodeURIComponent(query)}`
+  const res = await axios.get(url);
+  return res.data
 }
 
 const fetchBookDetails = async (id) => {
@@ -19,4 +45,4 @@ const fetchBookDetails = async (id) => {
   }
   return res.data;
 };
-export { fetchBooksByCategory, fetchBookDetails };
+export {categoryMap, fetchAllBooks, fetchBooksByCategory, searchBooks, fetchBookDetails };

@@ -43,9 +43,16 @@ body {
 }
 .bookList{
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 3rem;
   margin: 3vw;
+}
+.pagination{
+  margin-bottom: 10vh;
+  display: flex;
+  justify-content: row;
+  justify-content: center;
+  gap: 10vw;
 }
 a {
   font-weight: 500;
