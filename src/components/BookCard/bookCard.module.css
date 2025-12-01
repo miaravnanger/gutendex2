@@ -1,6 +1,8 @@
 .bookCard {
   padding-top: 5vh;
   padding-bottom: 5vh;
+  padding-left: 1vw;
+  padding-right: 1vw;
   background: url("../../../public/leather.jpg");
   background-size: cover;
   display: flex;
@@ -10,9 +12,7 @@
 }
 
 .bookImg {
-  margin-top: 2vh;
+  margin-top: 1.5vh;
   margin-bottom: 2vh;
-  margin-left: 2vw;
-  margin-right: 2vw;
   box-shadow: 8px 6px 5px 4px rgba(8, 5, 2, 0.586);
 }

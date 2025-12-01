@@ -29,7 +29,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    background-color: #06082e;
+    background-color: rgba(76, 44, 1, 0.788);
 }
 
 .searchInput{
@@ -43,7 +43,7 @@ body {
 }
 .bookList{
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 3rem;
   margin: 3vw;
 }
