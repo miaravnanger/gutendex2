@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
-import "../../styles/global.css"
+import "../../styles/global.css";
+import BookModal from "../Modal";
 
 export default function NavBar() {
   return (
     <nav className="navBar">
-      <Link to="/gutendex2/">Home</Link>
-      <Link to="books">Books</Link>
+      <BookModal />
       <Link to="favorites">Favorites</Link>
+      <Link to="/gutendex2/">Home</Link>
     </nav>
   );
 }
