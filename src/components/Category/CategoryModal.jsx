@@ -1,4 +1,4 @@
-import styles from "./modal.module.css"
+import styles from "./categoryModal.module.css"
 
 export default function BookModal({isOpen, onClose, categories, onSelect}) {
   if (!isOpen) return null;

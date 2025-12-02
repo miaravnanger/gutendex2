@@ -1,10 +1,15 @@
-import styles from "./bookCard.module.css"
+import styles from "./bookCard.module.css";
+import BookDetails from "../../pages/BookDetails/BookDetailsModal";
 export default function BookCard({ book }) {
   return (
     <>
       <div className={styles.bookCard}>
-        <h3>{book.title}</h3>
-        <img className={styles.bookImg}src={book.formats["image/jpeg"]} alt={book.title} />
+        <BookDetails book={book} />
+        <img
+          className={styles.bookImg}
+          src={book.formats["image/jpeg"]}
+          alt={book.title}
+        />
         <p>By: {book.authors?.map((a) => a.name).join(", ")}</p>
       </div>
     </>

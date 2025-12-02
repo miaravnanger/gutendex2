@@ -1,7 +1,7 @@
 import { useNavigate, Link } from "react-router-dom";
 import "../../styles/global.css";
 import { useState } from "react";
-import BookModal from "../Modal/Modal";
+import BookModal from "../Category/CategoryModal";
 
 const categories = [
   "fiction",

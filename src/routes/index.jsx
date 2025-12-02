@@ -3,7 +3,7 @@ import App from "../App";
 import Home from "../pages/Home";
 import Favorites from "../pages/Favorites";
 import CategoryBooks from "../pages/CategoryBooks";
-import BookDetails from "../pages/BookDetails";
+import BookDetails from "../pages/BookDetails/BookDetailsModal";
 
 const router = createBrowserRouter([
   {
