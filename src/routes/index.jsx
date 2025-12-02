@@ -3,7 +3,7 @@ import App from "../App";
 import Home from "../pages/Home";
 import Favorites from "../pages/Favorites";
 import CategoryBooks from "../pages/CategoryBooks";
-import BookDetails from "../pages/BookDetails/BookDetailsModal";
+
 
 const router = createBrowserRouter([
   {
@@ -13,7 +13,6 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "category/:category", element: <CategoryBooks /> },
-      { path: "book/:id", element: <BookDetails /> },
       { path: "favorites", element: <Favorites /> },
       { path: "*", element: <h1>404 not found</h1> },
     ],

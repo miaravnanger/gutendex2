@@ -3,7 +3,7 @@
   padding-bottom: 5vh;
   padding-left: 1vw;
   padding-right: 1vw;
-  background: url("../../../public/leather.jpg");
+  background: url("/leather.jpg");
   background-size: cover;
   display: flex;
   flex-direction: column;

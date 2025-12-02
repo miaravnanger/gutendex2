@@ -2,13 +2,15 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
+import BookCard from "../../components/BookCard/BookCard";
 
 const style = {
   position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
+  color: "black",
+  width: { xs: "90%", sm: 400, md: 500 },
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
@@ -17,7 +19,7 @@ const style = {
   pb: 3,
 };
 
-function ChildModal() {
+function ChildModal({ book }) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -28,26 +30,52 @@ function ChildModal() {
 
   return (
     <React.Fragment>
-      <Button onClick={handleOpen}>Open Child Modal</Button>
+      <Button
+        onClick={handleOpen}
+        color="inherit"
+        sx={{
+          color: "black",
+          "&:hover": {
+            backgroundColor: "transparent",
+            color: "black",
+          },
+          "&:focus": { outline: "none" },
+          "&:focus-visible": { outline: "none" },
+        }}
+      >
+        Read summary
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="child-modal-title"
         aria-describedby="child-modal-description"
       >
-        <Box sx={{ ...style, width: 200 }}>
-          <h2 id="child-modal-title">Text in a child modal</h2>
-          <p id="child-modal-description">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-          </p>
-          <Button onClick={handleClose}>Close Child Modal</Button>
+        <Box sx={{ ...style, width: 500 }}>
+          <h2 id="child-modal-title">{book.title}</h2>
+          <p id="child-modal-description">{book.summaries}</p>
+          <Button
+            onClick={handleClose}
+            color="inherit"
+            sx={{
+              color: "black",
+              "&:hover": {
+                backgroundColor: "transparent",
+                color: "black",
+              },
+              "&:focus": { outline: "none" },
+              "&:focus-visible": { outline: "none" },
+            }}
+          >
+            Close summary
+          </Button>
         </Box>
       </Modal>
     </React.Fragment>
   );
 }
 
-export default function NestedModal() {
+export default function BookModal({ book }) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -58,7 +86,21 @@ export default function NestedModal() {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Open modal</Button>
+      <Button
+        onClick={handleOpen}
+        color="inherit"
+        sx={{
+          color: "black",
+          "&:hover": {
+            backgroundColor: "transparent",
+            color: "black",
+          },
+          "&:focus": { outline: "none" },
+          "&:focus-visible": { outline: "none" },
+        }}
+      >
+        {book.title}
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -66,11 +108,13 @@ export default function NestedModal() {
         aria-describedby="parent-modal-description"
       >
         <Box sx={{ ...style, width: 400 }}>
-          <h2 id="parent-modal-title">Text in a modal</h2>
-          <p id="parent-modal-description">
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </p>
-          <ChildModal />
+          <h2 id="parent-modal-title">{book.title}</h2>
+          <img src={book.formats["image/jpeg"]} alt={book.title} width={200} />
+          <p>By: {book.authors?.map((a) => a.name).join(", ")}</p>
+          <ChildModal book={book} />
+          <button>
+            Add to favorites
+          </button>
         </Box>
       </Modal>
     </div>
