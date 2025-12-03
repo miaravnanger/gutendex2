@@ -31,6 +31,11 @@ const res = await axios.get(url);
 return res.data;
 }
 
+const fetchRandomBooks = async (limit = 10) => {
+  const res = await axios.get(`${BASE_URL}?sort=random&languages=en`)
+  return res.data.results.slice(0, limit);
+}
+
 const searchBooks = async (query, pageUrl) => {
   const url = pageUrl || `${BASE_URL}?search=${encodeURIComponent(query)}`
   const res = await axios.get(url);
@@ -45,4 +50,4 @@ const fetchBookDetails = async (id) => {
   }
   return res.data;
 };
-export {categoryMap, fetchAllBooks, fetchBooksByCategory, searchBooks, fetchBookDetails };
+export {categoryMap, fetchAllBooks, fetchBooksByCategory, fetchRandomBooks,searchBooks, fetchBookDetails };
