@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import BookCard from "../../components/BookCard/BookCard";
+import FavoriteButton from "../../components/FavoriteButton";
 
 const style = {
   position: "absolute",
@@ -112,9 +113,7 @@ export default function BookModal({ book }) {
           <img src={book.formats["image/jpeg"]} alt={book.title} width={200} />
           <p>By: {book.authors?.map((a) => a.name).join(", ")}</p>
           <ChildModal book={book} />
-          <button>
-            Add to favorites
-          </button>
+          <FavoriteButton {...book} />
         </Box>
       </Modal>
     </div>

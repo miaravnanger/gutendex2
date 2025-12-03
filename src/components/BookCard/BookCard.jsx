@@ -1,6 +1,10 @@
 import styles from "./bookCard.module.css";
 import BookModal from "../../pages/BookDetails/BookDetailsModal";
+import FavoriteButton from "../FavoriteButton";
+
 export default function BookCard({ book }) {
+  if (!book?.formats) return null;
+
   return (
     <>
       <div className={styles.bookCard}>
@@ -12,6 +16,7 @@ export default function BookCard({ book }) {
           width={200}
         />
         <p>By: {book.authors?.map((a) => a.name).join(", ")}</p>
+        <FavoriteButton {...book} />
       </div>
     </>
   );
