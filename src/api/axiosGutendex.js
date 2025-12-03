@@ -21,33 +21,39 @@ const categoryMap = {
 const fetchAllBooks = async (url = BASE_URL) => {
   const res = await axios.get(url);
   return res.data;
-}
+};
 
 const fetchBooksByCategory = async (category, pageUrl) => {
-if (!category) return null;
-const topic= categoryMap[category];
-const url = pageUrl || `${BASE_URL}?topic=${encodeURIComponent(topic)}`;
-const res = await axios.get(url);
-return res.data;
-}
+  if (!category) return null;
+  const topic = categoryMap[category];
+  const url = pageUrl || `${BASE_URL}?topic=${encodeURIComponent(topic)}`;
+  const res = await axios.get(url);
+  return res.data;
+};
 
-const fetchRandomBooks = async (limit = 10) => {
-  const res = await axios.get(`${BASE_URL}?sort=random&languages=en`)
-  return res.data.results.slice(0, limit);
-}
+const fetchRandomBooks = async () => {
+  const res = await axios.get(`${BASE_URL}?sort=random&languages=en`);
+  return res.data;
+};
 
 const searchBooks = async (query, pageUrl) => {
-  const url = pageUrl || `${BASE_URL}?search=${encodeURIComponent(query)}`
+  const url = pageUrl || `${BASE_URL}?search=${encodeURIComponent(query)}`;
   const res = await axios.get(url);
-  return res.data
-}
+  return res.data;
+};
 
 const fetchBookDetails = async (id) => {
-
   const res = await axios.get(`https://gutendex.com/books/${id}`);
   if (!Response.ok) {
-    throw new Error("Failed to fetch detailes about this book")
+    throw new Error("Failed to fetch detailes about this book");
   }
   return res.data;
 };
-export {categoryMap, fetchAllBooks, fetchBooksByCategory, fetchRandomBooks,searchBooks, fetchBookDetails };
+export {
+  categoryMap,
+  fetchAllBooks,
+  fetchBooksByCategory,
+  fetchRandomBooks,
+  searchBooks,
+  fetchBookDetails,
+};

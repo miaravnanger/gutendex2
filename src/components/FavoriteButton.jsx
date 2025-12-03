@@ -1,4 +1,5 @@
 import { useFavorites } from "../context/FavoritesContext";
+import "../styles/global.css";
 
 export default function FavoriteButton(props) {
   const { id } = props;
@@ -8,7 +9,8 @@ export default function FavoriteButton(props) {
 
   return (
     <button
-      classname="favorite-btn"
+      className="button"
+      id="favorite-btn"
       onClick={() => toggleFavorite(props)}
       aria-label="toggle favorite"
     >

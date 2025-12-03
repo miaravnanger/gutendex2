@@ -1,48 +1,46 @@
-import {useEffect, useState} from "react";
-import { useSearchParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useOutletContext } from "react-router-dom";
 import BookCard from "../components/BookCard/BookCard";
-import { searchBooks, fetchRandomBooks } from "../api/axiosGutenbergApi";
+import { fetchRandomBooks } from "../api/axiosGutendex.js";
 
-export default function Home(){
+export default function Home() {
+  const { searchResults } = useOutletContext();
   const [books, setBooks] = useState([]);
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
 
-  const [searchParams] = useSearchParams();
-  const searchQuery = searchParams.get("search") || "";
-
-
-useEffect(() => {
-  setLoading(true);
-
-  const fetchData = async () => {
-    try {
-      let data;
-      if (searchQuery) {
-        data = await searchBooks(searchQuery);
-      } else {
-        data = await fetchRandomBooks();
-      }
-      setBooks(data.results || []);
-    } catch (error) {
-      console.error(error);
-      setBooks([])
-    } finally {
+  useEffect(() => {
+    if (searchResults && searchResults.length > 0) {
+      setBooks(searchResults);
       setLoading(false);
+      return;
     }
-  };
 
-  fetchData();
-}, [searchQuery]);
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const data = await fetchRandomBooks();
+        setBooks(data.results || []);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
 
+    fetchData();
+  }, [searchResults]);
 
   if (loading) return <p>Loading...</p>;
   if (!books.length) return <p>No books found</p>;
 
   return (
-    <div>
-      {books.map((book) => (
-        <BookCard key={book.id} book={book} />
-      ))}
-    </div>
+    <>
+      {loading && <p>Loading...</p>}
+      <div className="bookList">
+        {books.map((book) => (
+          <BookCard key={book.id} book={book} />
+        ))}
+      </div>
+    </>
   );
 }

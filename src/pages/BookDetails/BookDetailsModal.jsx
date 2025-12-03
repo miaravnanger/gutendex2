@@ -35,10 +35,11 @@ function ChildModal({ book }) {
         onClick={handleOpen}
         color="inherit"
         sx={{
-          color: "black",
+          backgroundColor: "#1a1a1a;",
+          color: "white",
           "&:hover": {
-            backgroundColor: "transparent",
-            color: "black",
+            backgroundColor: "#1a1a1a;",
+            color: "white",
           },
           "&:focus": { outline: "none" },
           "&:focus-visible": { outline: "none" },
@@ -112,8 +113,9 @@ export default function BookModal({ book }) {
           <h2 id="parent-modal-title">{book.title}</h2>
           <img src={book.formats["image/jpeg"]} alt={book.title} width={200} />
           <p>By: {book.authors?.map((a) => a.name).join(", ")}</p>
-          <ChildModal book={book} />
-          <FavoriteButton {...book} />
+            <ChildModal book={book} />
+            <br/>
+            <FavoriteButton {...book} />
         </Box>
       </Modal>
     </div>
