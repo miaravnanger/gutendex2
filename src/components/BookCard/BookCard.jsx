@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 export default function BookCard({ book }) {
   const navigate = useNavigate();
   const openModal = () => {
-    navigate(`book/${book.id}`);
+    navigate(`/book/${book.id}`);
   };
 
   return (
