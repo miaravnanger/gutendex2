@@ -2,8 +2,9 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
+import { Chip, Stack } from "@mui/material";
 import FavoriteButton from "../components/FavoriteButton";
-import { Typography } from "@mui/material";
+import { Typography, Link } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 import { useBookDetails } from "../hooks/useBookQuery";
 
@@ -21,6 +22,27 @@ const style = {
   px: 4,
   pb: 3,
 };
+const buttonStyle = {
+  textTransform: "none",
+  borderRadius: "8px",
+  border: "1px solid transparent",
+  padding: "0.6em 1.2em",
+  fontSize: "1em",
+  fontWeight: 500,
+  fontFamily: "inherit",
+  backgroundColor: "#1a1a1a",
+  cursor: "pointer",
+  transition: "border-color 0.25s",
+  color: "white",
+  "&:hover": {
+    borderColor: "#646cff",
+    backgroundColor: "#1a1a1a",
+  },
+
+  "&:focus, &:focus-visible": {
+    outline: "4px auto -webkit-focus-ring-color",
+  },
+};
 
 function ChildModal({ book }) {
   const [open, setOpen] = React.useState(false);
@@ -33,20 +55,7 @@ function ChildModal({ book }) {
 
   return (
     <React.Fragment>
-      <Button
-        onClick={handleOpen}
-        color="inherit"
-        sx={{
-          backgroundColor: "#1a1a1a;",
-          color: "white",
-          "&:hover": {
-            backgroundColor: "#1a1a1a;",
-            color: "white",
-          },
-          "&:focus": { outline: "none" },
-          "&:focus-visible": { outline: "none" },
-        }}
-      >
+      <Button onClick={handleOpen} color="inherit" sx={{ ...buttonStyle }}>
         Read summary
       </Button>
       <Modal
@@ -57,19 +66,13 @@ function ChildModal({ book }) {
       >
         <Box sx={{ ...style, width: 500 }}>
           <h2 id="child-modal-title">{book.title}</h2>
+          <br />
           <p id="child-modal-description">{book.summaries}</p>
+          <br />
           <Button
             onClick={handleClose}
             color="inherit"
-            sx={{
-              color: "black",
-              "&:hover": {
-                backgroundColor: "transparent",
-                color: "black",
-              },
-              "&:focus": { outline: "none" },
-              "&:focus-visible": { outline: "none" },
-            }}
+            sx={{ ...buttonStyle, fontSize: ".9rem" }}
           >
             Close summary
           </Button>
@@ -106,16 +109,68 @@ export default function BookModal() {
           >
             {book.title}
           </Typography>
-          <img src={book.formats["image/jpeg"]} alt={book.title} width={200} />
-          <p>By: {book.authors?.map((a) => a.name).join(", ")}</p>
-          <p>Download count: {book.download_count}</p>
-          <p>Languages: {book.languages}</p>
-          <a href={book.formats["text/html"]}>
-            Click here to open the book in digital format
-          </a>
-          <ChildModal book={book} />
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row-reverse",
+              alignItems: "center",
+              gap: "1rem",
+              paddingBottom: "1rem",
+              paddingTop: "1rem",
+              textAlign: "left",
+            }}
+          >
+            <img
+              src={book.formats["image/jpeg"]}
+              alt={book.title}
+              width={200}
+            />
+            <Typography
+              id="parent-modal-desc"
+              variant="caption"
+              fontSize=".9rem"
+            >
+              <p>Written by: {book.authors?.map((a) => a.name).join(", ")}</p>
+              <p>Download count: {book.download_count}</p>
+              <p>Languages: {book.languages}</p>
+              <br />
+              <Link
+                href={book.formats["text/html"]}
+                target="_blank"
+                rel="noopener"
+                sx={{
+                  color: "black",
+                  "&:hover": {
+                    color: "blue",
+                  },
+                  textDecoration: "underline",
+                }}
+              >
+                Click here to open the book in digital format
+              </Link>
+            </Typography>
+          </Box>
+          <Typography
+            id="sub"
+            variant="caption"
+            sx={{ textAlign: "left", fontSize: "0.9rem" }}
+          >
+            <p>Subjects:</p>{" "}
+          </Typography>
+          <Stack direction="row" spacing={1} flexWrap="wrap">
+            {book.subjects?.map((subject, i) => (
+              <Chip key={i} label={subject} size="small" />
+            ))}
+          </Stack>
           <br />
-          <FavoriteButton {...book} />
+          <Typography
+            id="buttons"
+            variant="button"
+            sx={{ display: "flex", justifyContent: "space-between" }}
+          >
+            <ChildModal book={book} />
+            <FavoriteButton {...book} />
+          </Typography>
         </Box>
       </Modal>
     </div>

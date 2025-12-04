@@ -10,11 +10,10 @@ export default function FavoriteButton(props) {
   return (
     <button
       className="button"
-      id="favorite-btn"
       onClick={() => toggleFavorite(props)}
       aria-label="toggle favorite"
     >
-      {isFavorite ? "⭐ " : "☆"}
+      {isFavorite ? "Your favorite⭐ " : "Add to favorites ☆"}
     </button>
   );
 }

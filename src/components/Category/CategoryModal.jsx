@@ -14,7 +14,7 @@ export default function BookModal({isOpen, onClose, categories, onSelect}) {
             }}>{cat.toUpperCase()}</li>
           ))}
         </ul>
-        <button onClick={onClose}>Close</button>
+        <button className="button" onClick={onClose}>Close</button>
       </div>
       </div>
   );
