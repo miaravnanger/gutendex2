@@ -33,7 +33,7 @@ const buttonStyle = {
   backgroundColor: "#1a1a1a",
   cursor: "pointer",
   transition: "border-color 0.25s",
-  color: "white",
+  color: "white !important",
   "&:hover": {
     borderColor: "#646cff",
     backgroundColor: "#1a1a1a",
