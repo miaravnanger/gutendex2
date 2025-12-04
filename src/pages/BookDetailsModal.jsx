@@ -80,16 +80,15 @@ function ChildModal({ book }) {
 }
 
 export default function BookModal() {
-  const {bookId} = useParams();
-  const navigate = useNavigate()
-  const {data: book, isLoading, isError} = useBookDetails(bookId);
+  const { bookId } = useParams();
+  const navigate = useNavigate();
+  const { data: book, isLoading, isError } = useBookDetails(bookId);
 
-  const handleClose= () => {
+  const handleClose = () => {
     navigate(-1);
-  }
-    if (isLoading) return <h3>Loading...</h3>;
-    if (isError || !book) return <h3>Book not found</h3>;
-
+  };
+  if (isLoading) return <h3>Loading...</h3>;
+  if (isError || !book) return <h3>Book not found</h3>;
 
   return (
     <div>
@@ -107,12 +106,13 @@ export default function BookModal() {
           >
             {book.title}
           </Typography>
-          <img
-            src={book.formats["image/jpeg"]}
-            alt={book.title}
-            width={200}
-          />
+          <img src={book.formats["image/jpeg"]} alt={book.title} width={200} />
           <p>By: {book.authors?.map((a) => a.name).join(", ")}</p>
+          <p>Download count: {book.download_count}</p>
+          <p>Languages: {book.languages}</p>
+          <a href={book.formats["text/html"]}>
+            Click here to open the book in digital format
+          </a>
           <ChildModal book={book} />
           <br />
           <FavoriteButton {...book} />
