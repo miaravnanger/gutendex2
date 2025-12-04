@@ -64,7 +64,14 @@ function ChildModal({ book }) {
         aria-labelledby="child-modal-title"
         aria-describedby="child-modal-description"
       >
-        <Box sx={{ ...style, width: 500}}>
+        <Box
+          sx={{
+            ...style,
+            width: { xs: "90%", sm: 400, md: 500 },
+            maxHeight: "80vh",
+            overflowY: "auto",
+          }}
+        >
           <h2 id="child-modal-title">{book.title}</h2>
           <br />
           <p id="child-modal-description">{book.summaries}</p>

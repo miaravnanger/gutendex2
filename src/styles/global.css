@@ -97,19 +97,6 @@ a:hover {
   max-width: 400px;
 }
 
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
 @media (max-width: 600px) {
   .button {
     font-size: 0.9em;
