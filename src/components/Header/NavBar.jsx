@@ -19,7 +19,7 @@ const categories = [
   "philosophy",
 ];
 
-export default function NavBar({ onResetSearch }) {
+export default function NavBar({ onHomeClick}) {
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -28,8 +28,8 @@ export default function NavBar({ onResetSearch }) {
     setIsModalOpen(false);
   };
 
-  const handleHomeClick = () => {
-    if (onResetSearch) onResetSearch();
+  const handleHome = () => {
+    onHomeClick();  //reset input and search data
     navigate("/gutendex2/");
   };
 
@@ -38,7 +38,7 @@ export default function NavBar({ onResetSearch }) {
       <button className="button" onClick={() => setIsModalOpen(true)}>Categories</button>
       <Link to="favorites" className="button">Favorites</Link>
       {/* button to home insted of link because i want to reset the search input */}
-      <button className="button" onClick={handleHomeClick}>Home</button>
+      <button className="button" onClick={handleHome}>Home</button>
       <BookModal 
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

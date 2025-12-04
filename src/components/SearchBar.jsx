@@ -1,33 +1,38 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, forwardRef, useImperativeHandle } from "react";
 import "../styles/global.css";
+import { searchBooks } from "../api/axiosGutendex.js";
 
-export default function Searchbar({ onSelectBooks }) {
+const SearchBar = forwardRef(({ onSelectData }, ref) => {
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
 
+  useImperativeHandle(ref, () => ({
+    reset() {
+      setQuery("");
+    },
+  }));
+
   useEffect(() => {
     if (!query.trim()) {
-      onSelectBooks && onSelectBooks([]);
+      onSelectData(null);
       return;
     }
 
-    const delayDebounce = setTimeout(async () => {
+    const delay = setTimeout(async () => {
       setLoading(true);
       try {
-        const { searchBooks } = await import("../api/axiosGutendex.js");
         const data = await searchBooks(query);
-
-        onSelectBooks && onSelectBooks(data);
+        onSelectData(data);
       } catch (error) {
         console.error(error);
-        onSelectBooks && onSelectBooks(null);
+        onSelectData(null);
       } finally {
         setLoading(false);
       }
     }, 300);
 
-    return () => clearTimeout(delayDebounce);
-  }, [query, onSelectBooks]);
+    return () => clearTimeout(delay);
+  }, [query, onSelectData]);
 
   return (
     <div className="search-bar-container">
@@ -41,4 +46,6 @@ export default function Searchbar({ onSelectBooks }) {
       {loading && <p>Loading...</p>}
     </div>
   );
-}
+});
+
+export default SearchBar;

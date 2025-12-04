@@ -1,18 +1,27 @@
 import "./styles/global.css";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Outlet } from "react-router-dom";
 import Header from "./components/Header/Header";
 import FavoritesProvider from "./context/FavoritesContext.jsx";
 
 function App() {
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchData, setSearchData] = useState(null);
+  const searchBarRef = useRef() 
+
+
+  // reset search input
+  const handleHomeClick = () => {
+    searchBarRef.current?.reset();
+    setSearchData(null)
+  }
 
   return (
     <>
       <FavoritesProvider>
         <Header
-          onSelectBooks={setSearchResults}
-          onResetSearch={() => setSearchResults([])}
+          onSelectData={setSearchData}
+          searchBarRef={searchBarRef}
+          onHomeClick={handleHomeClick}
         />
         <main>
           <h1>Gutenberg book library</h1>
@@ -20,7 +29,7 @@ function App() {
             Browse through this random selection of books, search for your
             favorite books or browse books through categories.
           </p>
-          <Outlet context={{ searchResults, setSearchResults }} />
+          <Outlet context={{ searchData}} />
         </main>
       </FavoritesProvider>
     </>

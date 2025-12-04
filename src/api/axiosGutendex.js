@@ -31,12 +31,13 @@ const fetchBooksByCategory = async (category, pageUrl) => {
   return res.data;
 };
 
-const fetchRandomBooks = async () => {
-  const res = await axios.get(`${BASE_URL}?sort=random&languages=en`);
+const fetchRandomBooks = async (pageUrl = null) => {
+  const url = pageUrl || `${BASE_URL}?sort=random&languages=en`;
+  const res = await axios.get(url);
   return res.data;
 };
 
-const searchBooks = async (query, pageUrl) => {
+const searchBooks = async (query, pageUrl = null) => {
   const url = pageUrl || `${BASE_URL}?search=${encodeURIComponent(query)}`;
   const res = await axios.get(url);
   return res.data;
