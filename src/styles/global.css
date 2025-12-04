@@ -42,7 +42,7 @@ body {
     gap: 2rem;
 }
 .bookList{
-  background-color: burlywood;
+  background-color:  rgba(76, 44, 1, 0.788);
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1rem;
