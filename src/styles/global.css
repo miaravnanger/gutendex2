@@ -13,31 +13,30 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
 
 body {
   min-width: 320px;
   min-height: 100vh;
 }
-.header{
-    height: 15vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: rgba(76, 44, 1, 0.788);
-    width: 100%;
+.header {
+  height: 15vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(76, 44, 1, 0.788);
+  width: 100%;
 }
 
 .searchInput {
-  flex: 1;   
- margin-left: 2.5rem;        
-  width: 40vw;    
-  min-width: 150px;   
+  flex: 1;
+  margin-left: 2.5rem;
+  width: 40vw;
+  min-width: 150px;
   height: 5vh;
   margin-right: 1rem;
 }
@@ -48,14 +47,14 @@ body {
   justify-content: center;
   width: 100%;
 }
-.bookList{
-  background-color:  rgba(76, 44, 1, 0.788);
+.bookList {
+  background-color: rgba(76, 44, 1, 0.788);
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1rem;
   margin: 3vw;
 }
-.pagination{
+.pagination {
   margin-bottom: 10vh;
   display: flex;
   justify-content: row;
@@ -74,6 +73,7 @@ a:hover {
 .button {
   border-radius: 8px;
   border: 1px solid transparent;
+  color: white !important;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
@@ -85,10 +85,12 @@ a:hover {
 
 .button:hover {
   border-color: #646cff;
+  color: white !important;
 }
 .button:focus,
 .button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+  color: white !important;
 }
 
 .search-container {
@@ -101,5 +103,6 @@ a:hover {
   .button {
     font-size: 0.9em;
     padding: 0.5em 1em;
+    color: white !important;
   }
 }
