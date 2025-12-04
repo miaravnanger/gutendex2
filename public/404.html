@@ -5,7 +5,9 @@
     <title>Redirecting...</title>
     <script type="text/javascript">
       var pathname = window.location.pathname;
-      window.location.replace("/gutendex2/index.html#" + pathname);
+      var base = "/gutendex2";                 
+      var newPath = pathname.startsWith(base) ? pathname.slice(base.length) : pathname;
+      window.location.replace(base + "/index.html#" + newPath);
     </script>
   </head>
   <body>
