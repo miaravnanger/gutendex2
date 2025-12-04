@@ -1,9 +1,10 @@
 import * as React from "react";
+import { useState } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
-import BookCard from "../../components/BookCard/BookCard";
-import FavoriteButton from "../../components/FavoriteButton";
+import FavoriteButton from "../components/FavoriteButton";
+import { Typography } from "@mui/material";
 
 const style = {
   position: "absolute",
@@ -77,32 +78,10 @@ function ChildModal({ book }) {
   );
 }
 
-export default function BookModal({ book }) {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => {
-    setOpen(true);
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
+export default function BookModal({ book, open, handleClose }) {
 
   return (
     <div>
-      <Button
-        onClick={handleOpen}
-        color="inherit"
-        sx={{
-          color: "black",
-          "&:hover": {
-            backgroundColor: "transparent",
-            color: "black",
-          },
-          "&:focus": { outline: "none" },
-          "&:focus-visible": { outline: "none" },
-        }}
-      >
-        {book.title}
-      </Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -110,12 +89,22 @@ export default function BookModal({ book }) {
         aria-describedby="parent-modal-description"
       >
         <Box sx={{ ...style, width: 400 }}>
-          <h2 id="parent-modal-title">{book.title}</h2>
-          <img src={book.formats["image/jpeg"]} alt={book.title} width={200} />
+          <Typography
+            id="parent-modal-title"
+            variant="h2"
+            sx={{ fontWeight: "bold", fontSize: "1.8rem" }}
+          >
+            {book.title}
+          </Typography>
+          <img
+            src={book.formats["image/jpeg"]}
+            alt={book.title}
+            width={200}
+          />
           <p>By: {book.authors?.map((a) => a.name).join(", ")}</p>
-            <ChildModal book={book} />
-            <br/>
-            <FavoriteButton {...book} />
+          <ChildModal book={book} />
+          <br />
+          <FavoriteButton {...book} />
         </Box>
       </Modal>
     </div>
