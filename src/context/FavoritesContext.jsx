@@ -8,15 +8,14 @@ export const useFavorites = () => useContext(FavoritesContext);
 export default function FavoritesProvider({ children }) {
   const [favorites, setFavorites] = useLocalStorage("favorites", []);
 
-  // Add or remove from favorites
 
   const toggleFavorite = (item) => {
     setFavorites((prev) => {
       const exists = prev.find((i) => i.id === item.id);
 
       return exists
-        ? prev.filter((i) => i.id !== item.id) //remove
-        : [...prev, item]; //add
+        ? prev.filter((i) => i.id !== item.id) 
+        : [...prev, item]; 
     });
   };
 

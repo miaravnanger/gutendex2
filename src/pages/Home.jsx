@@ -11,7 +11,7 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setPageUrl(null); //reset pagination when starting a new search
+    setPageUrl(null); 
   }, [searchData]);
 
   useEffect(() => {
@@ -22,10 +22,10 @@ export default function Home() {
         let response;
 
         if (searchData && searchData.results) {
-          //pagination in search
+          
           response = pageUrl ? await searchBooks(null, pageUrl) : searchData;
         } else {
-          //random books
+          
           response = await fetchRandomBooks(pageUrl);
         }
 

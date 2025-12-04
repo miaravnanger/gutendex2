@@ -48,7 +48,7 @@ const fetchBookDetails = async (id) => {
 const res = await axios.get(`https://gutendex.com/books/${id}`);
 return res.data;
   } catch (error){
-    throw new Error("Failed to fetch details about this book");
+    throw new Error(error, "Failed to fetch details about this book");
   }
 
 };

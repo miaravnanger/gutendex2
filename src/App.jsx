@@ -9,7 +9,6 @@ function App() {
   const searchBarRef = useRef() 
 
 
-  // reset search input
   const handleHomeClick = () => {
     searchBarRef.current?.reset();
     setSearchData(null)
