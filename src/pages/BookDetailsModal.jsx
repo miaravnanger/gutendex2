@@ -4,6 +4,8 @@ import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import FavoriteButton from "../components/FavoriteButton";
 import { Typography } from "@mui/material";
+import { useNavigate, useParams } from "react-router-dom";
+import { useBookDetails } from "../hooks/useBookQuery";
 
 const style = {
   position: "absolute",
@@ -77,12 +79,22 @@ function ChildModal({ book }) {
   );
 }
 
-export default function BookModal({ book, open, handleClose }) {
+export default function BookModal() {
+  const {bookId} = useParams();
+  const navigate = useNavigate()
+  const {data: book, isLoading, isError} = useBookDetails(bookId);
+
+  const handleClose= () => {
+    navigate(-1);
+  }
+    if (isLoading) return <h3>Loading...</h3>;
+    if (isError || !book) return <h3>Book not found</h3>;
+
 
   return (
     <div>
       <Modal
-        open={open}
+        open={true}
         onClose={handleClose}
         aria-labelledby="parent-modal-title"
         aria-describedby="parent-modal-description"

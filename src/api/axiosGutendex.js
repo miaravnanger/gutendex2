@@ -44,12 +44,15 @@ const searchBooks = async (query, pageUrl = null) => {
 };
 
 const fetchBookDetails = async (id) => {
-  const res = await axios.get(`https://gutendex.com/books/${id}`);
-  if (!Response.ok) {
-    throw new Error("Failed to fetch detailes about this book");
+  try{
+const res = await axios.get(`https://gutendex.com/books/${id}`);
+return res.data;
+  } catch (error){
+    throw new Error("Failed to fetch details about this book");
   }
-  return res.data;
+
 };
+
 export {
   categoryMap,
   fetchAllBooks,

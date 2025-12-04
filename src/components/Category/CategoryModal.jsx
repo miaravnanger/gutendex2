@@ -10,7 +10,7 @@ export default function BookModal({isOpen, onClose, categories, onSelect}) {
         <ul className="categoryList">
           {categories.map((cat, i)=> (
             <li key={i} onClick={()=> {
-              onSelect(cat); onClose();
+              onSelect(cat.toLowerCase()); onClose();
             }}>{cat.toUpperCase()}</li>
           ))}
         </ul>

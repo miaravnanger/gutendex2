@@ -15,6 +15,7 @@ const router = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: "category/:category", element: <CategoryBooks /> },
       { path: "favorites", element: <Favorites /> },
+      {path: "book/:bookId", element: <BookModal/>},
       { path: "*", element: <h1>404 not found</h1> },
     ],
   },
