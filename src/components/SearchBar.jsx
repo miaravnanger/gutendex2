@@ -16,10 +16,11 @@ export default function Searchbar({ onSelectBooks }) {
       try {
         const { searchBooks } = await import("../api/axiosGutendex.js");
         const data = await searchBooks(query);
-        if (onSelectBooks) onSelectBooks(data.results || []);
+
+        onSelectBooks && onSelectBooks(data);
       } catch (error) {
         console.error(error);
-        if (onSelectBooks) onSelectBooks([]);
+        onSelectBooks && onSelectBooks(null);
       } finally {
         setLoading(false);
       }
