@@ -43,6 +43,11 @@ export default function Home() {
 
   return (
     <>
+      <h1>Gutenberg book library</h1>
+      <p>
+        Browse through this random selection of books, search for your favorite
+        books or browse books through categories.
+      </p>
       <div className="bookList">
         {data.results.map((book) => (
           <BookCard key={book.id} book={book} />

@@ -24,11 +24,6 @@ function App() {
           onHomeClick={handleHomeClick}
         />
         <main>
-          <h1>Gutenberg book library</h1>
-          <p>
-            Browse through this random selection of books, search for your
-            favorite books or browse books through categories.
-          </p>
           <Outlet context={{ searchData}} />
         </main>
       </FavoritesProvider>
