@@ -28,18 +28,25 @@ body {
     height: 15vh;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     background-color: rgba(76, 44, 1, 0.788);
+    width: 100%;
 }
 
-.searchInput{
-    width: 40vw;
-      height: 5vh;
+.searchInput {
+  flex: 1;   
+ margin-left: 2.5rem;        
+  width: 40vw;    
+  min-width: 150px;   
+  height: 5vh;
+  margin-right: 1rem;
 }
-.navBar{
-    display: flex;
-    justify-content: space-between;
-    gap: 2rem;
+.navBar {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
 }
 .bookList{
   background-color:  rgba(76, 44, 1, 0.788);
@@ -63,17 +70,6 @@ a {
 a:hover {
   color: #efefef;
 }
-.favorite-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1.8rem;
-  padding: 0;
-}
-
-.favorite-btn:hover {
-  transform: scale(1.15);
-}
 
 .button {
   border-radius: 8px;
@@ -86,6 +82,7 @@ a:hover {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 .button:hover {
   border-color: #646cff;
 }
@@ -100,30 +97,6 @@ a:hover {
   max-width: 400px;
 }
 
-.suggestions {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  color:#1a1a1a;
-  background: white;
-  border: 1px solid #ccc;
-  max-height: 200px;
-  overflow-y: auto;
-  z-index: 10;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.suggestions li {
-  padding: 0.5rem;
-  cursor: pointer;
-}
-
-.suggestions li:hover {
-  background-color: #f0f0f0;
-}
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -137,4 +110,9 @@ a:hover {
     background-color: #f9f9f9;
   }
 }
-
+@media (max-width: 600px) {
+  .button {
+    font-size: 0.9em;
+    padding: 0.5em 1em;
+  }
+}

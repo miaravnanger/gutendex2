@@ -64,7 +64,7 @@ function ChildModal({ book }) {
         aria-labelledby="child-modal-title"
         aria-describedby="child-modal-description"
       >
-        <Box sx={{ ...style, width: 500 }}>
+        <Box sx={{ ...style, width: 500}}>
           <h2 id="child-modal-title">{book.title}</h2>
           <br />
           <p id="child-modal-description">{book.summaries}</p>
@@ -102,6 +102,13 @@ export default function BookModal() {
         aria-describedby="parent-modal-description"
       >
         <Box sx={{ ...style, width: 400 }}>
+          <Button
+            onClick={handleClose}
+            color="inherit"
+            sx={{ ...buttonStyle, fontSize: "10px" }}
+          >
+            Close
+          </Button>
           <Typography
             id="parent-modal-title"
             variant="h2"
