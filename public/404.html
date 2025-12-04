@@ -4,10 +4,8 @@
     <meta charset="UTF-8" />
     <title>Redirecting...</title>
     <script type="text/javascript">
-      var pathname = window.location.pathname;
-      var base = "/gutendex2";                 
-      var newPath = pathname.startsWith(base) ? pathname.slice(base.length) : pathname;
-      window.location.replace(base + "/index.html#" + newPath);
+      // redirect alle 404s til index.html
+      window.location.replace("/gutendex2/index.html" + window.location.pathname.replace("/gutendex2", ""));
     </script>
   </head>
   <body>
