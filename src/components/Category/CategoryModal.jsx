@@ -1,6 +1,6 @@
-import styles from "./categoryModal.module.css"
+import styles from "./categoryModal.module.css";
 
-export default function BookModal({isOpen, onClose, categories, onSelect}) {
+export default function BookModal({ isOpen, onClose, categories, onSelect }) {
   if (!isOpen) return null;
 
   return (
@@ -8,14 +8,22 @@ export default function BookModal({isOpen, onClose, categories, onSelect}) {
       <div className={styles.modalContent}>
         <h2>Select category</h2>
         <ul className="categoryList">
-          {categories.map((cat, i)=> (
-            <li key={i} onClick={()=> {
-              onSelect(cat.toLowerCase()); onClose();
-            }}>{cat.toUpperCase()}</li>
+          {categories.map((cat, i) => (
+            <li
+              key={i}
+              onClick={() => {
+                onSelect(cat.toLowerCase());
+                onClose();
+              }}
+            >
+              {cat.charAt(0).toUpperCase() + cat.slice(1)}
+            </li>
           ))}
         </ul>
-        <button className="button" onClick={onClose}>Close</button>
+        <button className="button" onClick={onClose}>
+          Close
+        </button>
       </div>
-      </div>
+    </div>
   );
 }
