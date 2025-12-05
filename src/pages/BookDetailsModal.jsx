@@ -119,7 +119,10 @@ export default function BookModal() {
           <Typography
             id="parent-modal-title"
             variant="h2"
-            sx={{ fontWeight: "bold", fontSize: "1.8rem" }}
+            sx={{
+              fontWeight: "bold",
+              fontSize: "1.8rem",
+            }}
           >
             {book.title}
           </Typography>

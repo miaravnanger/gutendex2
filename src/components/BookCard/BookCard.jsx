@@ -12,10 +12,7 @@ export default function BookCard({ book }) {
   return (
     <>
       <div className={styles.bookCard}>
-        <h2
-          style={{ cursor: "pointer", fontWeight: "bold", margin: "5px 0" }}
-          onClick={openModal}
-        >
+        <h2 className={styles.title} onClick={openModal}>
           {book.title}
         </h2>
         <img

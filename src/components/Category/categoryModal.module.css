@@ -16,12 +16,12 @@
   flex-direction: column;
   align-items: center;
   gap: 1.3rem;
-  background: white;
+  background: rgb(48, 35, 35);
   padding: 20px;
   border-radius: 8px;
   max-width: 400px;
   width: 90%;
-  color: black;
+  color: white;
 }
 li{
     list-style-type: none;

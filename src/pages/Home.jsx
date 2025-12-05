@@ -48,6 +48,7 @@ export default function Home() {
         Browse through this random selection of books, search for your favorite
         books or browse books through categories.
       </p>
+      <p>Click the books to read more.</p>
       <div className="bookList">
         {data.results.map((book) => (
           <BookCard key={book.id} book={book} />

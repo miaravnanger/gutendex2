@@ -17,5 +17,15 @@
 
 .bookImg:hover {
   transform: scale(1.05);
-  box-shadow:  16px 12px 10px 8px rgba(8, 5, 2, 0.686);
+  box-shadow: 16px 12px 10px 8px rgba(8, 5, 2, 0.686);
+}
+
+.title {
+  cursor: pointer;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.title:hover {
+  transform: scale(1.05);
 }
